@@ -1,10 +1,11 @@
 import { Square } from "./Square"
 import { TURNS } from "./constant";
 import { saveGameStorage } from "./logic/storage";
+import confetti from "canvas-confetti";
+import { checkWinnerFrom, checkEndGame } from "./logic/board";
 
 
-
-export const Board = (({board, setBoard, turn, setTurn, winner})=>{
+export const Board = (({board, setBoard, turn, setTurn, winner, setWinner})=>{
 
     const updateBoard = (index) => {
         // se hace una nueva copia para mantener inmutable los valores iniciales

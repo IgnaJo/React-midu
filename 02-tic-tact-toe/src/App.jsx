@@ -35,42 +35,11 @@ const App = () => {
     
   };
 
-
-
-  const updateBoard = (index) => {
-    // se hace una nueva copia para mantener inmutable los valores iniciales
-    const newBoard = [...board];
-    //si ya tiene un valor, no modificar
-    //si existe ganador, no actualiza
-    if (board[index] || winner) return;
-    newBoard[index] = turn;
-    const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
-    setBoard(newBoard);
-    setTurn(newTurn);
-
-    saveGameStorage({board:newBoard, turn:newTurn})   
-
-    const newWinner = checkWinnerFrom(newBoard);
-    if (newWinner) {
-      confetti();
-      setWinner(newWinner);
-    } else if (checkEndGame(newBoard)) {
-      setWinner(false);
-    }
-  };
   return (
     <main className="board">
       <h1>TIC TAC TOE</h1>
-     {/*  <section className="game">
-        {board.map((square, index) => {
-          return (
-            <Square key={index} index={index} updateBoard={updateBoard}>
-              {square}
-            </Square>
-          );
-        })}
-      </section> */}
-      <Board board={board} turn={turn} setTurn={setTurn} winner={winner} setBoard={setBoard}/>
+     
+      <Board board={board} turn={turn} setTurn={setTurn} winner={winner} setBoard={setBoard} setWinner={setWinner}/>
       <section className="turn">
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
