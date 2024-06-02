@@ -1,10 +1,8 @@
 import React, { Children, useEffect, useState } from "react";
-import confetti from "canvas-confetti";
 import { Square } from "./components/Square";
 import { TURNS } from "./components/constant";
-import { checkWinnerFrom, checkEndGame } from "./components/logic/board";
 import { WinnerModal } from "./components/WinnerModal";
-import { resetGameStorage, saveGameStorage } from "./components/logic/storage";
+import { resetGameStorage } from "./components/logic/storage";
 import { Board } from "./components/Board";
 
 
